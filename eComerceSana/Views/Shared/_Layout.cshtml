@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>eCommerse sana</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("eCommerse Sana", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Home", "Index", "Home")</li>
+					<li>@Html.ActionLink("Product", "Product", "Home")</li>
+					<li>
+					</li>
+				</ul>
+			</div>
+			<div class="custom-control custom-switch">
+				<input type="checkbox" class="custom-control-input" id="type-data">
+				<label class="custom-control-label" for="customSwitch1">Save on memory</label>
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+	<script>
+		$(document).ready(function () {
+			var cookieKey = 'data-provide';
+			var option = $('#type-data');
+
+			if (getCookie(cookieKey)) {
+				option.prop("checked", true);
+			}
+
+			option.click(function () {
+				if ($('#type-data:checked').val()) {
+					setCookie(cookieKey, 'MEMORY', 1);
+				} else {
+					eraseCookie(cookieKey)
+				}
+				window.location.reload();
+			});
+
+
+			function setCookie(key, value, expiry) {
+				var expires = new Date();
+				expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+				document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+			}
+
+			function getCookie(key) {
+				var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+				return keyValue ? keyValue[2] : null;
+			}
+
+			function eraseCookie(key) {
+				var keyValue = getCookie(key);
+				setCookie(key, keyValue, '-1');
+			}
+		});
+	</script>
+</body>
+</html>

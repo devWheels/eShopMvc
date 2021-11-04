@@ -1,0 +1,38 @@
+﻿@model List<eComerceSana.Models.ProductDto>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var product in Model)
+            {
+                <tr>
+                    <th scope="row">@product.Id</th>
+                    <td>@product.Name</td>
+                    <td>$@product.Price</td>
+                    <td>
+                        @{
+                            foreach (var category in product.Categories)
+                            {
+                                <span class="badge rounded-pill bg-info"> @category.Name</span>
+
+                            }
+                        }
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

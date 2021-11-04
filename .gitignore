@@ -1,0 +1,8 @@
+Core/bin/
+Core/obj/Core.csproj.nuget.dgspec.json
+Core/obj/Core.csproj.nuget.g.props
+Core/obj/
+eComerceSana.Tests/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+eComerceSana.Tests/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+eComerceSana.Tests/obj/
+eComerceSana/bin/
